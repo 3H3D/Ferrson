@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FERRSON • Official Discography</title>
+    <title>Ferrson - Official Website</title>
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
@@ -13,8 +13,8 @@
 
     <style>
         :root {
-            --bg-dark: #0f0e13;
-            --card-bg: #18161e;
+            --bg-dark: #0b0c10;
+            --card-bg: rgba(20, 24, 33, 0.85);
             --accent-gold: #d4af37;
             --text-main: #f5f5f7;
             --text-muted: #a1a1aa;
@@ -45,8 +45,8 @@
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            background: rgba(15, 14, 19, 0.9);
-            backdrop-filter: blur(8px);
+            background: rgba(11, 12, 16, 0.9);
+            backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border-color);
         }
 
@@ -80,10 +80,23 @@
 
         /* --- HERO SECTION --- */
         .hero {
-            padding: 140px 20px 60px;
+            position: relative;
+            padding: 160px 20px 80px;
             text-align: center;
-            background: radial-gradient(circle at center, #1c1827 0%, var(--bg-dark) 70%);
+            overflow: hidden;
             border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(11, 12, 16, 0.9), rgba(11, 12, 16, 0.95)), 
+                        url('Ferwap.jpeg') center/cover no-repeat;
+            z-index: -1;
+            filter: contrast(1.1);
         }
 
         .profile-wrapper {
@@ -93,7 +106,8 @@
             border-radius: 50%;
             border: 2px solid var(--accent-gold);
             padding: 4px;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+            background: var(--bg-dark);
         }
 
         .profile-wrapper img {
@@ -109,6 +123,7 @@
             letter-spacing: 6px;
             color: #fff;
             margin-bottom: 10px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
         }
 
         .hero p {
@@ -118,7 +133,7 @@
             text-transform: uppercase;
         }
 
-        /* --- CATALOG / DISCOGRAPHY LIST SECTION --- */
+        /* --- CATALOG / DISCOGRAPHY SECTION --- */
         section {
             padding: 80px 20px;
             max-width: 900px;
@@ -142,7 +157,7 @@
         .catalog-list {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
         }
 
         .catalog-item {
@@ -151,7 +166,7 @@
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 6px;
-            padding: 18px 24px;
+            padding: 16px 20px;
             text-decoration: none;
             color: inherit;
             transition: all 0.3s ease;
@@ -159,17 +174,17 @@
 
         .catalog-item:hover {
             border-color: var(--accent-gold);
-            background: #1e1b26;
+            background: #181c27;
             transform: translateX(5px);
             box-shadow: 0 5px 20px rgba(212, 175, 55, 0.15);
         }
 
         .catalog-num {
             font-family: 'Cinzel', serif;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 700;
             color: var(--accent-gold);
-            width: 50px;
+            width: 55px;
         }
 
         .catalog-info {
@@ -177,14 +192,14 @@
         }
 
         .catalog-info h3 {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             color: #fff;
-            margin-bottom: 4px;
+            margin-bottom: 3px;
             letter-spacing: 0.5px;
         }
 
         .catalog-info p {
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             color: var(--text-muted);
         }
 
@@ -215,7 +230,7 @@
         .footer-warm {
             border-top: 1px solid var(--border-color);
             padding: 30px 20px;
-            background: #09080c;
+            background: #060709;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -258,7 +273,7 @@
             nav { padding: 15px 20px; }
             .nav-links { display: none; }
             .footer-warm { flex-direction: column; text-align: center; }
-            .catalog-item { padding: 15px; }
+            .catalog-item { padding: 14px; }
         }
     </style>
 </head>
@@ -273,7 +288,9 @@
         </ul>
     </nav>
 
+    <!-- Hero Section dengan Background Ferwap.jpeg -->
     <header id="home" class="hero">
+        <div class="hero-bg"></div>
         <div class="profile-wrapper">
             <img src="ferrson-profile.jpg" alt="Ferrson Profile">
         </div>
@@ -283,22 +300,22 @@
 
     <section id="music">
         <div class="section-title">
-            <h2>Discography & Catalog</h2>
+            <h2>Complete Discography & Catalog</h2>
         </div>
         
         <div class="catalog-list">
-            <!-- Item 1 -->
-            <a href="https://www.youtube.com/watch?v=LINK_LAGU" target="_blank" class="catalog-item">
+            <!-- 2026 -->
+            <a href="#" target="_blank" class="catalog-item">
                 <div class="catalog-num">01.</div>
                 <div class="catalog-info">
                     <h3>Toteko</h3>
-                    <p>Ferrson • Single • 2026-01</p>
+                    <p>Ferrson • Single • 2026</p>
                 </div>
                 <div class="catalog-arrow"><i class="fa-solid fa-arrow-right"></i></div>
             </a>
 
-            <!-- Item 2 -->
-            <a href="https://www.youtube.com/watch?v=LINK_LAGU" target="_blank" class="catalog-item">
+            <!-- 2025 -->
+            <a href="#" target="_blank" class="catalog-item">
                 <div class="catalog-num">02.</div>
                 <div class="catalog-info">
                     <h3>Fiaki</h3>
@@ -306,9 +323,7 @@
                 </div>
                 <div class="catalog-arrow"><i class="fa-solid fa-arrow-right"></i></div>
             </a>
-
-            <!-- Item 3 -->
-            <a href="https://www.youtube.com/watch?v=LINK_LAGU" target="_blank" class="catalog-item">
+            <a href="#" target="_blank" class="catalog-item">
                 <div class="catalog-num">03.</div>
                 <div class="catalog-info">
                     <h3>Dori</h3>
@@ -316,9 +331,7 @@
                 </div>
                 <div class="catalog-arrow"><i class="fa-solid fa-arrow-right"></i></div>
             </a>
-
-            <!-- Item 4 -->
-            <a href="https://www.youtube.com/watch?v=LINK_LAGU" target="_blank" class="catalog-item">
+            <a href="#" target="_blank" class="catalog-item">
                 <div class="catalog-num">04.</div>
                 <div class="catalog-info">
                     <h3>Ise Tugue</h3>
@@ -326,13 +339,199 @@
                 </div>
                 <div class="catalog-arrow"><i class="fa-solid fa-arrow-right"></i></div>
             </a>
-
-            <!-- Item 5 -->
-            <a href="https://www.youtube.com/watch?v=LINK_LAGU" target="_blank" class="catalog-item">
+            <a href="#" target="_blank" class="catalog-item">
                 <div class="catalog-num">05.</div>
                 <div class="catalog-info">
                     <h3>Oraig We</h3>
                     <p>Ferrson • Single • 2025</p>
+                </div>
+                <div class="catalog-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </a>
+
+            <!-- 2024 -->
+            <a href="#" target="_blank" class="catalog-item">
+                <div class="catalog-num">06.</div>
+                <div class="catalog-info">
+                    <h3>Jesus Dierorie</h3>
+                    <p>Ferrson • Single • 2024</p>
+                </div>
+                <div class="catalog-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </a>
+            <a href="#" target="_blank" class="catalog-item">
+                <div class="catalog-num">07.</div>
+                <div class="catalog-info">
+                    <h3>Awahaiyabu Sariwaraibio</h3>
+                    <p>Ferrson • Single • 2024</p>
+                </div>
+                <div class="catalog-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </a>
+            <a href="#" target="_blank" class="catalog-item">
+                <div class="catalog-num">08.</div>
+                <div class="catalog-info">
+                    <h3>Afraya Empa</h3>
+                    <p>Ferrson • Single • 2024</p>
+                </div>
+                <div class="catalog-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </a>
+            <a href="#" target="_blank" class="catalog-item">
+                <div class="catalog-num">09.</div>
+                <div class="catalog-info">
+                    <h3>Ture Ture</h3>
+                    <p>Ferrson • Single • 2024</p>
+                </div>
+                <div class="catalog-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </a>
+
+            <!-- 2023 -->
+            <a href="#" target="_blank" class="catalog-item">
+                <div class="catalog-num">10.</div>
+                <div class="catalog-info">
+                    <h3>Are Firiwa</h3>
+                    <p>Ferrson • Single • 2023</p>
+                </div>
+                <div class="catalog-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </a>
+            <a href="#" target="_blank" class="catalog-item">
+                <div class="catalog-num">11.</div>
+                <div class="catalog-info">
+                    <h3>Are Are Firiva</h3>
+                    <p>Ferrson • Single • 2023</p>
+                </div>
+                <div class="catalog-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </a>
+            <a href="#" target="_blank" class="catalog-item">
+                <div class="catalog-num">12.</div>
+                <div class="catalog-info">
+                    <h3>Airetie</h3>
+                    <p>Ferrson • Single • 2023</p>
+                </div>
+                <div class="catalog-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </a>
+            <a href="#" target="_blank" class="catalog-item">
+                <div class="catalog-num">13.</div>
+                <div class="catalog-info">
+                    <h3>Ferrson (EP)</h3>
+                    <p>Ferrson • EP • 2023</p>
+                </div>
+                <div class="catalog-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </a>
+
+            <!-- 2022 -->
+            <a href="#" target="_blank" class="catalog-item">
+                <div class="catalog-num">14.</div>
+                <div class="catalog-info">
+                    <h3>Hesai Huarawa</h3>
+                    <p>Ferrson • Single • 2022</p>
+                </div>
+                <div class="catalog-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </a>
+            <a href="#" target="_blank" class="catalog-item">
+                <div class="catalog-num">15.</div>
+                <div class="catalog-info">
+                    <h3>Kahia Bekobei</h3>
+                    <p>Ferrson • Single • 2022</p>
+                </div>
+                <div class="catalog-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </a>
+            <a href="#" target="_blank" class="catalog-item">
+                <div class="catalog-num">16.</div>
+                <div class="catalog-info">
+                    <h3>Ika Hikeie</h3>
+                    <p>Ferrson & Brecko • Single • 2022</p>
+                </div>
+                <div class="catalog-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </a>
+
+            <!-- 2021 -->
+            <a href="#" target="_blank" class="catalog-item">
+                <div class="catalog-num">17.</div>
+                <div class="catalog-info">
+                    <h3>Salomina</h3>
+                    <p>Ferrson • Single • 2021</p>
+                </div>
+                <div class="catalog-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </a>
+            <a href="#" target="_blank" class="catalog-item">
+                <div class="catalog-num">18.</div>
+                <div class="catalog-info">
+                    <h3>Buegh Hueco</h3>
+                    <p>Ferrson • Single • 2021</p>
+                </div>
+                <div class="catalog-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </a>
+            <a href="#" target="_blank" class="catalog-item">
+                <div class="catalog-num">19.</div>
+                <div class="catalog-info">
+                    <h3>Afra Hueco</h3>
+                    <p>Ferrson • Single • 2021</p>
+                </div>
+                <div class="catalog-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </a>
+            <a href="#" target="_blank" class="catalog-item">
+                <div class="catalog-num">20.</div>
+                <div class="catalog-info">
+                    <h3>Wahiya</h3>
+                    <p>Ferrson • Single • 2021</p>
+                </div>
+                <div class="catalog-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </a>
+            <a href="#" target="_blank" class="catalog-item">
+                <div class="catalog-num">21.</div>
+                <div class="catalog-info">
+                    <h3>Colletion (EP)</h3>
+                    <p>Ferrson • EP • 2021</p>
+                </div>
+                <div class="catalog-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </a>
+
+            <!-- 2020 -->
+            <a href="#" target="_blank" class="catalog-item">
+                <div class="catalog-num">22.</div>
+                <div class="catalog-info">
+                    <h3>Rouffaer Boys (EP)</h3>
+                    <p>Ferrson • EP • 2020</p>
+                </div>
+                <div class="catalog-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </a>
+
+            <!-- 2019 -->
+            <a href="#" target="_blank" class="catalog-item">
+                <div class="catalog-num">23.</div>
+                <div class="catalog-info">
+                    <h3>Aiye Ouje</h3>
+                    <p>Ferrson • Single • 2019</p>
+                </div>
+                <div class="catalog-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </a>
+            <a href="#" target="_blank" class="catalog-item">
+                <div class="catalog-num">24.</div>
+                <div class="catalog-info">
+                    <h3>Sore</h3>
+                    <p>Ferrson • Single • 2019</p>
+                </div>
+                <div class="catalog-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </a>
+            <a href="#" target="_blank" class="catalog-item">
+                <div class="catalog-num">25.</div>
+                <div class="catalog-info">
+                    <h3>Sekolah Kabari</h3>
+                    <p>Ferrson • Single • 2019</p>
+                </div>
+                <div class="catalog-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </a>
+            <a href="#" target="_blank" class="catalog-item">
+                <div class="catalog-num">26.</div>
+                <div class="catalog-info">
+                    <h3>Kihai Ababi</h3>
+                    <p>Ferrson • Single • 2019</p>
+                </div>
+                <div class="catalog-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </a>
+            <a href="#" target="_blank" class="catalog-item">
+                <div class="catalog-num">27.</div>
+                <div class="catalog-info">
+                    <h3>Collection - Ferrson (Album)</h3>
+                    <p>Ferrson • Album • 2019</p>
                 </div>
                 <div class="catalog-arrow"><i class="fa-solid fa-arrow-right"></i></div>
             </a>
