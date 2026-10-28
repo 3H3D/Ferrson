@@ -47,25 +47,13 @@
             z-index: -1;
         }
 
-        /* --- TOP BANNER --- */
-        .top-banner {
-            background: #8b2626;
-            color: #fff;
-            text-align: center;
-            padding: 10px 15px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
         /* --- NAVIGASI --- */
         nav {
             background: rgba(17, 17, 17, 0.85);
             backdrop-filter: blur(8px);
             padding: 20px 40px;
             display: flex;
-            justify-content: flex-end; /* Menu digeser ke kanan karena logo kiri dihapus */
+            justify-content: flex-end;
             align-items: center;
             border-bottom: 1px solid var(--border-light);
             position: sticky;
@@ -97,7 +85,7 @@
         /* --- SISTEM HALAMAN TERPISAH (SECTIONS) --- */
         .page-section {
             display: none;
-            min-height: calc(100vh - 140px);
+            min-height: calc(100vh - 100px);
             padding: 50px 20px;
         }
 
@@ -108,15 +96,15 @@
             align-items: center;
         }
 
-        /* --- HALAMAN 1: HOME (NAMA UTAMA DIPERBESAR) --- */
+        /* --- HALAMAN 1: HOME --- */
         #home-section {
             text-align: center;
-            height: calc(100vh - 140px);
+            height: calc(100vh - 100px);
         }
 
         #home-section h1 {
             font-family: 'Oswald', sans-serif;
-            font-size: clamp(5rem, 13vw, 8.5rem); /* Diperbesar dari sebelumnya */
+            font-size: clamp(5rem, 13vw, 8.5rem);
             font-weight: 700;
             letter-spacing: 10px;
             text-transform: uppercase;
@@ -154,7 +142,7 @@
             transform: translateY(-3px);
         }
 
-        /* --- HALAMAN 2: CATALOG (TERPISAH) --- */
+        /* --- HALAMAN 2: CATALOG --- */
         #catalog-section {
             max-width: 1000px;
             margin: 0 auto;
@@ -163,13 +151,13 @@
 
         .page-title {
             font-family: 'Oswald', sans-serif;
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-size: clamp(3.5rem, 7vw, 5.5rem);
             font-weight: 700;
             text-align: center;
-            letter-spacing: 4px;
+            letter-spacing: 6px;
             text-transform: uppercase;
             margin-bottom: 40px;
-            text-shadow: 0 4px 15px rgba(0,0,0,0.9);
+            text-shadow: 0 6px 20px rgba(0,0,0,0.95);
         }
 
         .catalog-container {
@@ -235,7 +223,7 @@
             color: var(--accent-red);
         }
 
-        /* --- HALAMAN 3: ABOUT (TERPISAH) --- */
+        /* --- HALAMAN 3: ABOUT --- */
         #about-section {
             max-width: 800px;
             margin: 0 auto;
@@ -305,7 +293,6 @@
         /* --- PENGATURAN KHUSUS HP (MOBILE) --- */
         @media (max-width: 768px) {
             nav { padding: 15px 20px; justify-content: center; }
-            /* Menyembunyikan menu "HOME" di HP agar lebih ringkas */
             #nav-home { display: none; }
             .catalog-row { grid-template-columns: 40px 1fr 70px 30px; }
             .col-type { display: none; }
@@ -318,11 +305,6 @@
 
     <div class="page-bg"></div>
 
-    <div class="top-banner">
-        OFFICIAL MUSIC CATALOG & RELEASES • FERWAP MUSIC ENTERTAINMENT
-    </div>
-
-    <!-- Navigasi (Nama kiri dihapus, menu dikanan & otomatis sembunyikan Home di HP) -->
     <nav>
         <ul class="nav-links">
             <li><a onclick="switchPage('home')" id="nav-home" class="active">Home</a></li>
@@ -338,7 +320,7 @@
         <a class="btn-explore" onclick="switchPage('catalog')">Explore Catalog</a>
     </section>
 
-    <!-- ================= HALAMAN 2: CATALOG (TERPISAH) ================= -->
+    <!-- ================= HALAMAN 2: CATALOG ================= -->
     <section class="page-section" id="catalog-section">
         <h2 class="page-title">Discography</h2>
         <div class="catalog-container">
