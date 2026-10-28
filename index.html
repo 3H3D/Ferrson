@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ferrson - Official Website</title>
+    <title>FERRSON • Official Website</title>
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
@@ -47,13 +47,13 @@
             z-index: -1;
         }
 
-        /* --- NAVIGASI (DIPERBESAR & DIPERTEBAL) --- */
+        /* --- NAVIGASI DIPOSISIKAN TEPAT DI TENGAH ATAS --- */
         nav {
             background: rgba(17, 17, 17, 0.85);
             backdrop-filter: blur(8px);
-            padding: 22px 50px;
+            padding: 22px 20px;
             display: flex;
-            justify-content: flex-end;
+            justify-content: center; /* Posisikan ke tengah atas */
             align-items: center;
             border-bottom: 1px solid var(--border-light);
             position: fixed;
@@ -65,16 +65,16 @@
 
         .nav-links {
             display: flex;
-            gap: 35px; /* Jarak antar menu diperlebar */
+            gap: 35px;
             list-style: none;
         }
 
         .nav-links a {
             color: var(--text-main);
             text-decoration: none;
-            font-size: 1.15rem; /* Ukuran teks diperbesar dari sebelumnya */
-            font-weight: 800; /* Dibuat lebih tebal/bold */
-            letter-spacing: 2.5px; /* Jarak antar huruf diperlebar */
+            font-size: 1.15rem;
+            font-weight: 800;
+            letter-spacing: 2.5px;
             text-transform: uppercase;
             transition: all 0.3s ease;
             cursor: pointer;
@@ -303,7 +303,7 @@
 
         /* --- MOBILE RESPONSIVE --- */
         @media (max-width: 768px) {
-            nav { padding: 15px 20px; justify-content: center; }
+            nav { padding: 15px 20px; }
             .nav-links { gap: 20px; }
             .nav-links a { font-size: 1rem; }
             #nav-home { display: none; }
@@ -318,6 +318,7 @@
 
     <div class="page-bg"></div>
 
+    <!-- Navigasi Tepat di Tengah Atas -->
     <nav>
         <ul class="nav-links">
             <li><a onclick="switchPage('home')" id="nav-home" class="active">Home</a></li>
