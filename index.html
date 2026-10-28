@@ -24,7 +24,6 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Montserrat', sans-serif;
-            scroll-behavior: smooth;
         }
 
         body {
@@ -32,9 +31,10 @@
             color: var(--text-main);
             overflow-x: hidden;
             position: relative;
+            min-height: 100vh;
         }
 
-        /* --- BACKGROUND FOTO ARTIS DI BELAKANG (FULL) --- */
+        /* --- BACKGROUND FOTO ARTIS DI BELAKANG (FIXED) --- */
         .page-bg {
             position: fixed;
             top: 0;
@@ -81,6 +81,7 @@
             color: #fff;
             text-decoration: none;
             text-transform: uppercase;
+            cursor: pointer;
         }
 
         .nav-links {
@@ -97,34 +98,44 @@
             letter-spacing: 1.5px;
             text-transform: uppercase;
             transition: color 0.3s;
+            cursor: pointer;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: var(--accent-red);
         }
 
-        /* --- SECTION 1: HOME DEPAN KOSONG / BERSIH (FULL SCREEN) --- */
-        .hero-section {
-            height: calc(100vh - 100px);
-            display: flex;
+        /* --- SISTEM HALAMAN TERPISAH (SECTIONS) --- */
+        .page-section {
+            display: none; /* Disembunyikan secara default */
+            min-height: calc(100vh - 140px);
+            padding: 50px 20px;
+        }
+
+        .page-section.active {
+            display: flex; /* Hanya tampil jika aktif */
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center;
-            padding: 20px;
         }
 
-        .hero-section h1 {
+        /* --- HALAMAN 1: HOME (PERSIS SEPERTI GAMBAR YANG ANDA TANDAI) --- */
+        #home-section {
+            text-align: center;
+            height: calc(100vh - 140px);
+        }
+
+        #home-section h1 {
             font-family: 'Oswald', sans-serif;
             font-size: clamp(4rem, 10vw, 7rem);
             font-weight: 700;
             letter-spacing: 8px;
             text-transform: uppercase;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             text-shadow: 0 5px 25px rgba(0,0,0,0.9);
         }
 
-        .hero-section p {
+        #home-section p {
             font-size: 1rem;
             letter-spacing: 4px;
             color: var(--text-muted);
@@ -143,7 +154,8 @@
             letter-spacing: 3px;
             text-transform: uppercase;
             transition: all 0.3s ease;
-            background: rgba(0,0,0,0.3);
+            background: rgba(0,0,0,0.4);
+            cursor: pointer;
         }
 
         .btn-explore:hover {
@@ -152,29 +164,29 @@
             transform: translateY(-3px);
         }
 
-        /* --- SECTION 2: CATALOG & ABOUT --- */
-        .main-content {
+        /* --- HALAMAN 2: CATALOG (TERPISAH PENUH) --- */
+        #catalog-section {
             max-width: 1000px;
             margin: 0 auto;
-            padding: 100px 20px 80px;
+            justify-content: flex-start !important;
         }
 
         .page-title {
             font-family: 'Oswald', sans-serif;
-            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
             font-weight: 700;
             text-align: center;
             letter-spacing: 4px;
             text-transform: uppercase;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
             text-shadow: 0 4px 15px rgba(0,0,0,0.9);
         }
 
-        /* --- DAFTAR KATALOG DENGAN LINK --- */
         .catalog-container {
             display: flex;
             flex-direction: column;
             gap: 12px;
+            width: 100%;
         }
 
         .catalog-row {
@@ -183,7 +195,7 @@
             align-items: center;
             padding: 16px 20px;
             border-bottom: 1px solid var(--border-light);
-            background: rgba(0, 0, 0, 0.55);
+            background: rgba(0, 0, 0, 0.6);
             backdrop-filter: blur(6px);
             transition: all 0.3s ease;
             text-decoration: none;
@@ -233,29 +245,34 @@
             color: var(--accent-red);
         }
 
-        /* --- ABOUT SECTION --- */
-        .about-section {
-            margin-top: 80px;
+        /* --- HALAMAN 3: ABOUT (TERPISAH PENUH) --- */
+        #about-section {
+            max-width: 800px;
+            margin: 0 auto;
             text-align: center;
-            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .about-box {
+            background: rgba(0, 0, 0, 0.75);
             backdrop-filter: blur(8px);
             padding: 40px;
             border: 1px solid var(--border-light);
+            border-radius: 8px;
+            width: 100%;
         }
 
-        .about-section h2 {
+        .about-box h2 {
             font-family: 'Oswald', sans-serif;
             font-size: 2rem;
             letter-spacing: 3px;
             margin-bottom: 15px;
+            text-transform: uppercase;
         }
 
-        .about-section p {
+        .about-box p {
             color: #ccc;
             line-height: 1.8;
             font-size: 0.95rem;
-            max-width: 800px;
-            margin: 0 auto;
         }
 
         /* --- FOOTER --- */
@@ -285,7 +302,6 @@
         }
 
         .social-icons a {
-            class: "social-link";
             color: var(--text-muted);
             font-size: 1.2rem;
             margin-left: 20px;
@@ -308,7 +324,6 @@
 </head>
 <body>
 
-    <!-- Latar Belakang Foto Artis -->
     <div class="page-bg"></div>
 
     <div class="top-banner">
@@ -317,239 +332,239 @@
 
     <!-- Navigasi -->
     <nav>
-        <a href="#home" class="brand-logo">FERRSON</a>
+        <a onclick="switchPage('home')" class="brand-logo">FERRSON</a>
         <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#catalog">Catalog</a></li>
-            <li><a href="#about">About</a></li>
+            <li><a onclick="switchPage('home')" id="nav-home" class="active">Home</a></li>
+            <li><a onclick="switchPage('catalog')" id="nav-catalog">Catalog</a></li>
+            <li><a onclick="switchPage('about')" id="nav-about">About</a></li>
         </ul>
     </nav>
 
-    <!-- HALAMAN DEPAN (HOME) BERSIH / KOSONG DENGAN NAMA & TOMBOL -->
-    <section class="hero-section" id="home">
+    <!-- ================= HALAMAN 1: HOME (SESUAI GAMBAR) ================= -->
+    <section class="page-section active" id="home-section">
         <h1>FERRSON</h1>
         <p>Official Artist Hub</p>
-        <a href="#catalog" class="btn-explore">Explore Catalog</a>
+        <a class="btn-explore" onclick="switchPage('catalog')">Explore Catalog</a>
     </section>
 
-    <!-- KONTEN KATALOG DAN ABOUT DI BAWAHNYA -->
-    <main class="main-content">
+    <!-- ================= HALAMAN 2: CATALOG (TERPISAH) ================= -->
+    <section class="page-section" id="catalog-section">
+        <h2 class="page-title">Discography</h2>
+        <div class="catalog-container">
+            <!-- 2026 -->
+            <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
+                <span class="col-num">01</span>
+                <span class="col-title">Toteko</span>
+                <span class="col-type">Single</span>
+                <span class="col-year">2026</span>
+                <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
 
-        <div id="catalog">
-            <h2 class="page-title">DISCOGRAPHY</h2>
-            <div class="catalog-container">
-                <!-- 2026 -->
-                <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
-                    <span class="col-num">01</span>
-                    <span class="col-title">Toteko</span>
-                    <span class="col-type">Single</span>
-                    <span class="col-year">2026</span>
-                    <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
-                </a>
+            <!-- 2025 -->
+            <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
+                <span class="col-num">02</span>
+                <span class="col-title">Fiaki</span>
+                <span class="col-type">Single</span>
+                <span class="col-year">2025</span>
+                <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
+                <span class="col-num">03</span>
+                <span class="col-title">Dori</span>
+                <span class="col-type">Single</span>
+                <span class="col-year">2025</span>
+                <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
+                <span class="col-num">04</span>
+                <span class="col-title">Ise Tugue</span>
+                <span class="col-type">Single</span>
+                <span class="col-year">2025</span>
+                <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
+                <span class="col-num">05</span>
+                <span class="col-title">Oraig We</span>
+                <span class="col-type">Single</span>
+                <span class="col-year">2025</span>
+                <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
 
-                <!-- 2025 -->
-                <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
-                    <span class="col-num">02</span>
-                    <span class="col-title">Fiaki</span>
-                    <span class="col-type">Single</span>
-                    <span class="col-year">2025</span>
-                    <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
-                </a>
-                <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
-                    <span class="col-num">03</span>
-                    <span class="col-title">Dori</span>
-                    <span class="col-type">Single</span>
-                    <span class="col-year">2025</span>
-                    <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
-                </a>
-                <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
-                    <span class="col-num">04</span>
-                    <span class="col-title">Ise Tugue</span>
-                    <span class="col-type">Single</span>
-                    <span class="col-year">2025</span>
-                    <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
-                </a>
-                <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
-                    <span class="col-num">05</span>
-                    <span class="col-title">Oraig We</span>
-                    <span class="col-type">Single</span>
-                    <span class="col-year">2025</span>
-                    <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
-                </a>
+            <!-- 2024 -->
+            <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
+                <span class="col-num">06</span>
+                <span class="col-title">Jesus Dierorie</span>
+                <span class="col-type">Single</span>
+                <span class="col-year">2024</span>
+                <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
+                <span class="col-num">07</span>
+                <span class="col-title">Awahaiyabu Sariwaraibio</span>
+                <span class="col-type">Single</span>
+                <span class="col-year">2024</span>
+                <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
+                <span class="col-num">08</span>
+                <span class="col-title">Afraya Empa</span>
+                <span class="col-type">Single</span>
+                <span class="col-year">2024</span>
+                <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
+                <span class="col-num">09</span>
+                <span class="col-title">Ture Ture</span>
+                <span class="col-type">Single</span>
+                <span class="col-year">2024</span>
+                <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
 
-                <!-- 2024 -->
-                <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
-                    <span class="col-num">06</span>
-                    <span class="col-title">Jesus Dierorie</span>
-                    <span class="col-type">Single</span>
-                    <span class="col-year">2024</span>
-                    <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
-                </a>
-                <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
-                    <span class="col-num">07</span>
-                    <span class="col-title">Awahaiyabu Sariwaraibio</span>
-                    <span class="col-type">Single</span>
-                    <span class="col-year">2024</span>
-                    <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
-                </a>
-                <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
-                    <span class="col-num">08</span>
-                    <span class="col-title">Afraya Empa</span>
-                    <span class="col-type">Single</span>
-                    <span class="col-year">2024</span>
-                    <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
-                </a>
-                <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
-                    <span class="col-num">09</span>
-                    <span class="col-title">Ture Ture</span>
-                    <span class="col-type">Single</span>
-                    <span class="col-year">2024</span>
-                    <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
-                </a>
+            <!-- 2023 -->
+            <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
+                <span class="col-num">10</span>
+                <span class="col-title">Are Firiwa</span>
+                <span class="col-type">Single</span>
+                <span class="col-year">2023</span>
+                <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
+                <span class="col-num">11</span>
+                <span class="col-title">Are Are Firiva</span>
+                <span class="col-type">Single</span>
+                <span class="col-year">2023</span>
+                <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
+                <span class="col-num">12</span>
+                <span class="col-title">Airetie</span>
+                <span class="col-type">Single</span>
+                <span class="col-year">2023</span>
+                <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
+                <span class="col-num">13</span>
+                <span class="col-title">Ferrson</span>
+                <span class="col-type">EP</span>
+                <span class="col-year">2023</span>
+                <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
 
-                <!-- 2023 -->
-                <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
-                    <span class="col-num">10</span>
-                    <span class="col-title">Are Firiwa</span>
-                    <span class="col-type">Single</span>
-                    <span class="col-year">2023</span>
-                    <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
-                </a>
-                <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
-                    <span class="col-num">11</span>
-                    <span class="col-title">Are Are Firiva</span>
-                    <span class="col-type">Single</span>
-                    <span class="col-year">2023</span>
-                    <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
-                </a>
-                <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
-                    <span class="col-num">12</span>
-                    <span class="col-title">Airetie</span>
-                    <span class="col-type">Single</span>
-                    <span class="col-year">2023</span>
-                    <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
-                </a>
-                <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
-                    <span class="col-num">13</span>
-                    <span class="col-title">Ferrson</span>
-                    <span class="col-type">EP</span>
-                    <span class="col-year">2023</span>
-                    <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
-                </a>
+            <!-- 2022 -->
+            <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
+                <span class="col-num">14</span>
+                <span class="col-title">Hesai Huarawa</span>
+                <span class="col-type">Single</span>
+                <span class="col-year">2022</span>
+                <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
+                <span class="col-num">15</span>
+                <span class="col-title">Kahia Bekobei</span>
+                <span class="col-type">Single</span>
+                <span class="col-year">2022</span>
+                <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
+                <span class="col-num">16</span>
+                <span class="col-title">Ika Hikeie (feat. Brecko)</span>
+                <span class="col-type">Single</span>
+                <span class="col-year">2022</span>
+                <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
 
-                <!-- 2022 -->
-                <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
-                    <span class="col-num">14</span>
-                    <span class="col-title">Hesai Huarawa</span>
-                    <span class="col-type">Single</span>
-                    <span class="col-year">2022</span>
-                    <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
-                </a>
-                <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
-                    <span class="col-num">15</span>
-                    <span class="col-title">Kahia Bekobei</span>
-                    <span class="col-type">Single</span>
-                    <span class="col-year">2022</span>
-                    <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
-                </a>
-                <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
-                    <span class="col-num">16</span>
-                    <span class="col-title">Ika Hikeie (feat. Brecko)</span>
-                    <span class="col-type">Single</span>
-                    <span class="col-year">2022</span>
-                    <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
-                </a>
+            <!-- 2021 -->
+            <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
+                <span class="col-num">17</span>
+                <span class="col-title">Salomina</span>
+                <span class="col-type">Single</span>
+                <span class="col-year">2021</span>
+                <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
+                <span class="col-num">18</span>
+                <span class="col-title">Buegh Hueco</span>
+                <span class="col-type">Single</span>
+                <span class="col-year">2021</span>
+                <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
+                <span class="col-num">19</span>
+                <span class="col-title">Afra Hueco</span>
+                <span class="col-type">Single</span>
+                <span class="col-year">2021</span>
+                <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
+                <span class="col-num">20</span>
+                <span class="col-title">Wahiya</span>
+                <span class="col-type">Single</span>
+                <span class="col-year">2021</span>
+                <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
+                <span class="col-num">21</span>
+                <span class="col-title">Colletion</span>
+                <span class="col-type">EP</span>
+                <span class="col-year">2021</span>
+                <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
 
-                <!-- 2021 -->
-                <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
-                    <span class="col-num">17</span>
-                    <span class="col-title">Salomina</span>
-                    <span class="col-type">Single</span>
-                    <span class="col-year">2021</span>
-                    <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
-                </a>
-                <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
-                    <span class="col-num">18</span>
-                    <span class="col-title">Buegh Hueco</span>
-                    <span class="col-type">Single</span>
-                    <span class="col-year">2021</span>
-                    <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
-                </a>
-                <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
-                    <span class="col-num">19</span>
-                    <span class="col-title">Afra Hueco</span>
-                    <span class="col-type">Single</span>
-                    <span class="col-year">2021</span>
-                    <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
-                </a>
-                <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
-                    <span class="col-num">20</span>
-                    <span class="col-title">Wahiya</span>
-                    <span class="col-type">Single</span>
-                    <span class="col-year">2021</span>
-                    <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
-                </a>
-                <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
-                    <span class="col-num">21</span>
-                    <span class="col-title">Colletion</span>
-                    <span class="col-type">EP</span>
-                    <span class="col-year">2021</span>
-                    <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
-                </a>
-
-                <!-- 2020 & 2019 -->
-                <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
-                    <span class="col-num">22</span>
-                    <span class="col-title">Rouffaer Boys</span>
-                    <span class="col-type">EP</span>
-                    <span class="col-year">2020</span>
-                    <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
-                </a>
-                <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
-                    <span class="col-num">23</span>
-                    <span class="col-title">Aiye Ouje</span>
-                    <span class="col-type">Single</span>
-                    <span class="col-year">2019</span>
-                    <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
-                </a>
-                <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
-                    <span class="col-num">24</span>
-                    <span class="col-title">Sore</span>
-                    <span class="col-type">Single</span>
-                    <span class="col-year">2019</span>
-                    <span class="col-action"><i class="fa-solid fa-arrow-right"></i>*/</span>
-                </a>
-                <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
-                    <span class="col-num">25</span>
-                    <span class="col-title">Sekolah Kabari</span>
-                    <span class="col-type">Single</span>
-                    <span class="col-year">2019</span>
-                    <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
-                </a>
-                <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
-                    <span class="col-num">26</span>
-                    <span class="col-title">Kihai Ababi</span>
-                    <span class="col-type">Single</span>
-                    <span class="col-year">2019</span>
-                    <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
-                </a>
-                <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
-                    <span class="col-num">27</span>
-                    <span class="col-title">Collection - Ferrson</span>
-                    <span class="col-type">Album</span>
-                    <span class="col-year">2019</span>
-                    <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
-                </a>
-            </div>
+            <!-- 2020 & 2019 -->
+            <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
+                <span class="col-num">22</span>
+                <span class="col-title">Rouffaer Boys</span>
+                <span class="col-type">EP</span>
+                <span class="col-year">2020</span>
+                <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
+                <span class="col-num">23</span>
+                <span class="col-title">Aiye Ouje</span>
+                <span class="col-type">Single</span>
+                <span class="col-year">2019</span>
+                <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
+                <span class="col-num">24</span>
+                <span class="col-title">Sore</span>
+                <span class="col-type">Single</span>
+                <span class="col-year">2019</span>
+                <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
+                <span class="col-num">25</span>
+                <span class="col-title">Sekolah Kabari</span>
+                <span class="col-type">Single</span>
+                <span class="col-year">2019</span>
+                <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
+                <span class="col-num">26</span>
+                <span class="col-title">Kihai Ababi</span>
+                <span class="col-type">Single</span>
+                <span class="col-year">2019</span>
+                <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
+                <span class="col-num">27</span>
+                <span class="col-title">Collection - Ferrson</span>
+                <span class="col-type">Album</span>
+                <span class="col-year">2019</span>
+                <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
         </div>
+    </section>
 
-        <div class="about-section" id="about">
-            <h2>ABOUT FERRSON</h2>
+    <!-- ================= HALAMAN 3: ABOUT (TERPISAH) ================= -->
+    <section class="page-section" id="about-section">
+        <div class="about-box">
+            <h2>About Ferrson</h2>
             <p>Ferrson is an independent music artist operating under Ferwap Music Entertainment. Delivering authentic releases spanning from 2019 to 2026, Ferrson continues to release original songs, EPs, and albums across global platforms.</p>
         </div>
+    </section>
 
-    </main>
-
+    <!-- Footer -->
     <footer>
         <div class="footer-left">
             &copy; 2026 FERWAP MUSIC ENTERTAINMENT | ALL RIGHTS RESERVED | 
@@ -561,6 +576,27 @@
             <a href="https://www.youtube.com/" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
         </div>
     </footer>
+
+    <!-- SCRIPT UNTUK PINDAH HALAMAN TERPISAH -->
+    <script>
+        function switchPage(pageId) {
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+            });
+
+            document.getElementById(pageId + '-section').classList.add('active');
+            
+            const navLink = document.getElementById('nav-' + pageId);
+            if (navLink) {
+                navLink.classList.add('active');
+            }
+
+            window.scrollTo(0, 0);
+        }
+    </script>
 
 </body>
 </html>
