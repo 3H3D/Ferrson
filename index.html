@@ -65,23 +65,12 @@
             backdrop-filter: blur(8px);
             padding: 20px 40px;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end; /* Menu digeser ke kanan karena logo kiri dihapus */
             align-items: center;
             border-bottom: 1px solid var(--border-light);
             position: sticky;
             top: 0;
             z-index: 100;
-        }
-
-        .brand-logo {
-            font-family: 'Oswald', sans-serif;
-            font-size: 2rem;
-            font-weight: 700;
-            letter-spacing: 3px;
-            color: #fff;
-            text-decoration: none;
-            text-transform: uppercase;
-            cursor: pointer;
         }
 
         .nav-links {
@@ -107,19 +96,19 @@
 
         /* --- SISTEM HALAMAN TERPISAH (SECTIONS) --- */
         .page-section {
-            display: none; /* Disembunyikan secara default */
+            display: none;
             min-height: calc(100vh - 140px);
             padding: 50px 20px;
         }
 
         .page-section.active {
-            display: flex; /* Hanya tampil jika aktif */
+            display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
         }
 
-        /* --- HALAMAN 1: HOME (PERSIS SEPERTI GAMBAR YANG ANDA TANDAI) --- */
+        /* --- HALAMAN 1: HOME (NAMA UTAMA DIPERBESAR) --- */
         #home-section {
             text-align: center;
             height: calc(100vh - 140px);
@@ -127,34 +116,35 @@
 
         #home-section h1 {
             font-family: 'Oswald', sans-serif;
-            font-size: clamp(4rem, 10vw, 7rem);
+            font-size: clamp(5rem, 13vw, 8.5rem); /* Diperbesar dari sebelumnya */
             font-weight: 700;
-            letter-spacing: 8px;
+            letter-spacing: 10px;
             text-transform: uppercase;
             margin-bottom: 10px;
-            text-shadow: 0 5px 25px rgba(0,0,0,0.9);
+            text-shadow: 0 6px 30px rgba(0,0,0,0.95);
         }
 
         #home-section p {
-            font-size: 1rem;
-            letter-spacing: 4px;
+            font-size: 1.1rem;
+            letter-spacing: 5px;
             color: var(--text-muted);
             text-transform: uppercase;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.9);
         }
 
         .btn-explore {
             display: inline-block;
-            padding: 14px 36px;
+            padding: 16px 40px;
             border: 2px solid #fff;
             color: #fff;
             text-decoration: none;
             font-family: 'Oswald', sans-serif;
-            font-size: 1rem;
+            font-size: 1.1rem;
             letter-spacing: 3px;
             text-transform: uppercase;
             transition: all 0.3s ease;
-            background: rgba(0,0,0,0.4);
+            background: rgba(0,0,0,0.5);
             cursor: pointer;
         }
 
@@ -164,7 +154,7 @@
             transform: translateY(-3px);
         }
 
-        /* --- HALAMAN 2: CATALOG (TERPISAH PENUH) --- */
+        /* --- HALAMAN 2: CATALOG (TERPISAH) --- */
         #catalog-section {
             max-width: 1000px;
             margin: 0 auto;
@@ -245,7 +235,7 @@
             color: var(--accent-red);
         }
 
-        /* --- HALAMAN 3: ABOUT (TERPISAH PENUH) --- */
+        /* --- HALAMAN 3: ABOUT (TERPISAH) --- */
         #about-section {
             max-width: 800px;
             margin: 0 auto;
@@ -312,9 +302,11 @@
             color: var(--accent-red);
         }
 
+        /* --- PENGATURAN KHUSUS HP (MOBILE) --- */
         @media (max-width: 768px) {
-            nav { padding: 15px 20px; }
-            .nav-links { display: none; }
+            nav { padding: 15px 20px; justify-content: center; }
+            /* Menyembunyikan menu "HOME" di HP agar lebih ringkas */
+            #nav-home { display: none; }
             .catalog-row { grid-template-columns: 40px 1fr 70px 30px; }
             .col-type { display: none; }
             footer { flex-direction: column; text-align: center; }
@@ -330,9 +322,8 @@
         OFFICIAL MUSIC CATALOG & RELEASES • FERWAP MUSIC ENTERTAINMENT
     </div>
 
-    <!-- Navigasi -->
+    <!-- Navigasi (Nama kiri dihapus, menu dikanan & otomatis sembunyikan Home di HP) -->
     <nav>
-        <a onclick="switchPage('home')" class="brand-logo">FERRSON</a>
         <ul class="nav-links">
             <li><a onclick="switchPage('home')" id="nav-home" class="active">Home</a></li>
             <li><a onclick="switchPage('catalog')" id="nav-catalog">Catalog</a></li>
@@ -340,7 +331,7 @@
         </ul>
     </nav>
 
-    <!-- ================= HALAMAN 1: HOME (SESUAI GAMBAR) ================= -->
+    <!-- ================= HALAMAN 1: HOME ================= -->
     <section class="page-section active" id="home-section">
         <h1>FERRSON</h1>
         <p>Official Artist Hub</p>
@@ -556,7 +547,7 @@
         </div>
     </section>
 
-    <!-- ================= HALAMAN 3: ABOUT (TERPISAH) ================= -->
+    <!-- ================= HALAMAN 3: ABOUT ================= -->
     <section class="page-section" id="about-section">
         <div class="about-box">
             <h2>About Ferrson</h2>
@@ -577,7 +568,7 @@
         </div>
     </footer>
 
-    <!-- SCRIPT UNTUK PINDAH HALAMAN TERPISAH -->
+    <!-- SCRIPT PERPINDAHAN HALAMAN -->
     <script>
         function switchPage(pageId) {
             document.querySelectorAll('.page-section').forEach(section => {
