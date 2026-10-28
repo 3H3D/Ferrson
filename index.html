@@ -3,249 +3,216 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FERRSON • Official Artist Hub</title>
+    <title>FERRSON • Official Website</title>
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --bg-base: #0a0b0e;
-            --bg-surface: #12141c;
-            --bg-hover: #1c1f2b;
             --accent-red: #e50914;
-            --accent-gold: #d4af37;
-            --text-primary: #ffffff;
-            --text-secondary: #94a3b8;
-            --border: rgba(255, 255, 255, 0.08);
+            --text-main: #ffffff;
+            --text-muted: #aaaaaa;
+            --border-light: rgba(255, 255, 255, 0.15);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: 'Montserrat', sans-serif;
             scroll-behavior: smooth;
         }
 
         body {
-            background-color: var(--bg-base);
-            color: var(--text-primary);
+            background-color: #0d0d0d;
+            color: var(--text-main);
             overflow-x: hidden;
+            position: relative;
         }
 
-        /* --- HEADER NAVIGATION --- */
-        nav {
+        /* --- BACKGROUND FOTO ARTIS DI BELAKANG --- */
+        .page-bg {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            padding: 16px 40px;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(rgba(13, 13, 13, 0.82), rgba(13, 13, 13, 0.82)),
+                        url('Ferrson.F.jpeg') center/cover no-repeat;
+            filter: grayscale(100%) contrast(1.1);
+            z-index: -1;
+        }
+
+        /* --- TOP BANNER --- */
+        .top-banner {
+            background: #8b2626;
+            color: #fff;
+            text-align: center;
+            padding: 10px 15px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* --- NAVIGASI --- */
+        nav {
+            background: #111111;
+            padding: 20px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 1000;
-            background: rgba(10, 11, 14, 0.85);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border);
+            border-bottom: 1px solid var(--border-light);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         .brand-logo {
-            font-size: 1.25rem;
-            font-weight: 800;
-            letter-spacing: 2px;
-            color: var(--text-primary);
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: #fff;
             text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .brand-logo span {
-            color: var(--accent-red);
+            text-transform: uppercase;
         }
 
         .nav-links {
             display: flex;
-            gap: 28px;
+            gap: 25px;
             list-style: none;
         }
 
         .nav-links a {
-            color: var(--text-secondary);
+            color: var(--text-main);
             text-decoration: none;
             font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 1px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
-            transition: color 0.3s ease;
+            transition: color 0.3s;
         }
 
         .nav-links a:hover {
-            color: var(--text-primary);
+            color: var(--accent-red);
         }
 
-        /* --- ARTIST BANNER HERO --- */
-        .hero-banner {
-            position: relative;
-            height: 60vh;
-            min-height: 400px;
-            display: flex;
-            align-items: flex-end;
-            padding: 0 40px 40px;
-            background: linear-gradient(180deg, rgba(10, 11, 14, 0.2) 0%, rgba(10, 11, 14, 0.95) 100%),
-                        url('Ferwap.jpeg') center/cover no-repeat;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .hero-content {
-            max-width: 1200px;
-            width: 100%;
+        /* --- KONTEN UTAMA --- */
+        .main-content {
+            max-width: 1000px;
             margin: 0 auto;
+            padding: 60px 20px 100px;
         }
 
-        .verified-badge {
-            display: inline-flex;
+        .page-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            text-align: center;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 50px;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.9);
+        }
+
+        /* --- DAFTAR KATALOG DENGAN LINK --- */
+        .catalog-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .catalog-row {
+            display: grid;
+            grid-template-columns: 50px 1fr 120px 80px 40px;
             align-items: center;
-            gap: 6px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: #38bdf8;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 12px;
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border-light);
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
         }
 
-        .artist-title {
-            font-size: clamp(3rem, 7vw, 5.5rem);
-            font-weight: 800;
-            line-height: 1;
-            letter-spacing: -1px;
-            margin-bottom: 12px;
-        }
-
-        .artist-meta {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            font-weight: 500;
-        }
-
-        /* --- MAIN CONTENT CONTAINER --- */
-        .main-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 50px 40px;
-        }
-
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            margin-bottom: 30px;
-        }
-
-        .section-header h2 {
-            font-size: 1.6rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
-
-        /* --- TRACKLIST TABLE STYLE --- */
-        .track-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .track-table th {
-            text-align: left;
-            padding: 12px 16px;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--text-secondary);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .track-row {
-            transition: background 0.2s ease;
-            cursor: pointer;
-        }
-
-        .track-row:hover {
-            background-color: var(--bg-hover);
-        }
-
-        .track-row td {
-            padding: 16px;
-            font-size: 0.9rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        .catalog-row:hover {
+            background: rgba(229, 9, 20, 0.25);
+            border-bottom-color: var(--accent-red);
+            transform: translateX(5px);
         }
 
         .col-num {
-            width: 50px;
-            color: var(--text-secondary);
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.1rem;
+            color: var(--text-muted);
             font-weight: 600;
         }
 
         .col-title {
+            font-size: 1.05rem;
             font-weight: 700;
-            color: var(--text-primary);
+            letter-spacing: 0.5px;
         }
 
         .col-type {
-            color: var(--text-secondary);
             font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .col-year {
-            color: var(--text-secondary);
-            font-size: 0.85rem;
+            font-size: 0.9rem;
+            color: var(--text-main);
+            font-weight: 600;
             text-align: right;
         }
 
-        .badge-type {
-            display: inline-block;
-            padding: 3px 8px;
-            border-radius: 4px;
-            background: rgba(255, 255, 255, 0.06);
-            font-size: 0.75rem;
-            color: var(--text-secondary);
+        .col-action {
+            text-align: right;
+            color: var(--text-muted);
+            transition: color 0.3s;
         }
 
-        /* --- ABOUT CARD --- */
-        .about-card {
-            background: var(--bg-surface);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 32px;
-            margin-top: 60px;
+        .catalog-row:hover .col-action {
+            color: var(--accent-red);
         }
 
-        .about-card h3 {
-            font-size: 1.25rem;
-            margin-bottom: 12px;
+        /* --- ABOUT SECTION --- */
+        .about-section {
+            margin-top: 80px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(6px);
+            padding: 40px;
+            border: 1px solid var(--border-light);
         }
 
-        .about-card p {
-            color: var(--text-secondary);
-            line-height: 1.7;
+        .about-section h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+
+        .about-section p {
+            color: #ccc;
+            line-height: 1.8;
             font-size: 0.95rem;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         /* --- FOOTER --- */
         footer {
-            border-top: 1px solid var(--border);
+            background: #090909;
+            border-top: 1px solid var(--border-light);
             padding: 30px 40px;
-            background: #07080a;
-            margin-top: 80px;
-        }
-
-        .footer-inner {
-            max-width: 1200px;
-            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -253,50 +220,51 @@
             gap: 20px;
         }
 
-        .footer-text {
+        .footer-left {
             font-size: 0.8rem;
-            color: var(--text-secondary);
+            color: var(--text-muted);
         }
 
-        .footer-text a {
-            color: var(--text-secondary);
+        .footer-left a {
+            color: var(--text-muted);
             text-decoration: none;
-            transition: color 0.2s;
         }
 
-        .footer-text a:hover {
-            color: var(--text-primary);
+        .footer-left a:hover {
+            color: #fff;
         }
 
-        .social-nav a {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
+        .social-icons a {
+            color: var(--text-muted);
+            font-size: 1.2rem;
             margin-left: 20px;
-            transition: color 0.2s;
+            transition: color 0.3s;
         }
 
-        .social-nav a:hover {
+        .social-icons a:hover {
             color: var(--accent-red);
         }
 
         @media (max-width: 768px) {
-            nav { padding: 16px 20px; }
+            nav { padding: 15px 20px; }
             .nav-links { display: none; }
-            .hero-banner { padding: 0 20px 30px; height: 45vh; }
-            .main-container { padding: 30px 20px; }
+            .catalog-row { grid-template-columns: 40px 1fr 70px 30px; }
             .col-type { display: none; }
-            .footer-inner { flex-direction: column; text-align: center; }
-            .social-nav a { margin: 0 10px; }
+            footer { flex-direction: column; text-align: center; }
+            .social-icons a { margin: 0 10px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Navigasi Utama -->
+    <div class="page-bg"></div>
+
+    <div class="top-banner">
+        OFFICIAL MUSIC CATALOG & RELEASES • FERWAP MUSIC ENTERTAINMENT
+    </div>
+
     <nav>
-        <a href="#home" class="brand-logo">
-            <span>FERWAP</span> MUSIC
-        </a>
+        <a href="#home" class="brand-logo">FERRSON</a>
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#catalog">Catalog</a></li>
@@ -304,235 +272,231 @@
         </ul>
     </nav>
 
-    <!-- Banner Hero Sinematik Modern -->
-    <header id="home" class="hero-banner">
-        <div class="hero-content">
-            <div class="verified-badge">
-                <i class="fa-solid fa-circle-check"></i> Official Artist
-            </div>
-            <h1 class="artist-title">FERRSON</h1>
-            <p class="artist-meta">Singer • Songwriter • Music Creator under Ferwap Music Entertainment</p>
+    <main class="main-content" id="home">
+
+        <h1 class="page-title">DISCOGRAPHY</h1>
+
+        <div class="catalog-container" id="catalog">
+            <!-- 2026 -->
+            <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
+                <span class="col-num">01</span>
+                <span class="col-title">Toteko</span>
+                <span class="col-type">Single</span>
+                <span class="col-year">2026</span>
+                <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+
+            <!-- 2025 -->
+            <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
+                <span class="col-num">02</span>
+                <span class="col-title">Fiaki</span>
+                <span class="col-type">Single</span>
+                <span class="col-year">2025</span>
+                <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
+                <span class="col-num">03</span>
+                <span class="col-title">Dori</span>
+                <span class="col-type">Single</span>
+                <span class="col-year">2025</span>
+                <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
+                <span class="col-num">04</span>
+                <span class="col-title">Ise Tugue</span>
+                <span class="col-type">Single</span>
+                <span class="col-year">2025</span>
+                <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
+                <span class="col-num">05</span>
+                <span class="col-title">Oraig We</span>
+                <span class="col-type">Single</span>
+                <span class="col-year">2025</span>
+                <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+
+            <!-- 2024 -->
+            <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
+                <span class="col-num">06</span>
+                <span class="col-title">Jesus Dierorie</span>
+                <span class="col-type">Single</span>
+                <span class="col-year">2024</span>
+                <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
+                <span class="col-num">07</span>
+                <span class="col-title">Awahaiyabu Sariwaraibio</span>
+                <span class="col-type">Single</span>
+                <span class="col-year">2024</span>
+                <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
+                <span class="col-num">08</span>
+                <span class="col-title">Afraya Empa</span>
+                <span class="col-type">Single</span>
+                <span class="col-year">2024</span>
+                <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
+                <span class="col-num">09</span>
+                <span class="col-title">Ture Ture</span>
+                <span class="col-type">Single</span>
+                <span class="col-year">2024</span>
+                <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+
+            <!-- 2023 -->
+            <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
+                <span class="col-num">10</span>
+                <span class="col-title">Are Firiwa</span>
+                <span class="col-type">Single</span>
+                <span class="col-year">2023</span>
+                <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
+                <span class="col-num">11</span>
+                <span class="col-title">Are Are Firiva</span>
+                <span class="col-type">Single</span>
+                <span class="col-year">2023</span>
+                <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
+                <span class="col-num">12</span>
+                <span class="col-title">Airetie</span>
+                <span class="col-type">Single</span>
+                <span class="col-year">2023</span>
+                <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
+                <span class="col-num">13</span>
+                <span class="col-title">Ferrson</span>
+                <span class="col-type">EP</span>
+                <span class="col-year">2023</span>
+                <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+
+            <!-- 2022 -->
+            <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
+                <span class="col-num">14</span>
+                <span class="col-title">Hesai Huarawa</span>
+                <span class="col-type">Single</span>
+                <span class="col-year">2022</span>
+                <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
+                <span class="col-num">15</span>
+                <span class="col-title">Kahia Bekobei</span>
+                <span class="col-type">Single</span>
+                <span class="col-year">2022</span>
+                <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
+                <span class="col-num">16</span>
+                <span class="col-title">Ika Hikeie (feat. Brecko)</span>
+                <span class="col-type">Single</span>
+                <span class="col-year">2022</span>
+                <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+
+            <!-- 2021 -->
+            <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
+                <span class="col-num">17</span>
+                <span class="col-title">Salomina</span>
+                <span class="col-type">Single</span>
+                <span class="col-year">2021</span>
+                <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
+                <span class="col-num">18</span>
+                <span class="col-title">Buegh Hueco</span>
+                <span class="col-type">Single</span>
+                <span class="col-year">2021</span>
+                <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
+                <span class="col-num">19</span>
+                <span class="col-title">Afra Hueco</span>
+                <span class="col-type">Single</span>
+                <span class="col-year">2021</span>
+                <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
+                <span class="col-num">20</span>
+                <span class="col-title">Wahiya</span>
+                <span class="col-type">Single</span>
+                <span class="col-year">2021</span>
+                <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
+                <span class="col-num">21</span>
+                <span class="col-title">Colletion</span>
+                <span class="col-type">EP</span>
+                <span class="col-year">2021</span>
+                <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+
+            <!-- 2020 & 2019 -->
+            <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
+                <span class="col-num">22</span>
+                <span class="col-title">Rouffaer Boys</span>
+                <span class="col-type">EP</span>
+                <span class="col-year">2020</span>
+                <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
+                <span class="col-num">23</span>
+                <span class="col-title">Aiye Ouje</span>
+                <span class="col-type">Single</span>
+                <span class="col-year">2019</span>
+                <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
+                <span class="col-num">24</span>
+                <span class="col-title">Sore</span>
+                <span class="col-type">Single</span>
+                <span class="col-year">2019</span>
+                <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
+                <span class="col-num">25</span>
+                <span class="col-title">Sekolah Kabari</span>
+                <span class="col-type">Single</span>
+                <span class="col-year">2019</span>
+                <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
+                <span class="col-num">26</span>
+                <span class="col-title">Kihai Ababi</span>
+                <span class="col-type">Single</span>
+                <span class="col-year">2019</span>
+                <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=LINK_LAGU_ANDA" target="_blank" class="catalog-row">
+                <span class="col-num">27</span>
+                <span class="col-title">Collection - Ferrson</span>
+                <span class="col-type">Album</span>
+                <span class="col-year">2019</span>
+                <span class="col-action"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
         </div>
-    </header>
 
-    <!-- Main Content Container -->
-    <main class="main-container">
-
-        <!-- Section Katalog Diskografi -->
-        <section id="catalog">
-            <div class="section-header">
-                <h2>Discography & Catalog</h2>
-            </div>
-
-            <table class="track-table">
-                <thead>
-                    <tr>
-                        <th class="col-num">#</th>
-                        <th>Title</th>
-                        <th class="col-type">Format</th>
-                        <th class="col-year">Release</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- 2026 -->
-                    <tr class="track-row">
-                        <td class="col-num">01</td>
-                        <td class="col-title">Toteko</td>
-                        <td class="col-type"><span class="badge-type">Single</span></td>
-                        <td class="col-year">2026</td>
-                    </tr>
-
-                    <!-- 2025 -->
-                    <tr class="track-row">
-                        <td class="col-num">02</td>
-                        <td class="col-title">Fiaki</td>
-                        <td class="col-type"><span class="badge-type">Single</span></td>
-                        <td class="col-year">2025</td>
-                    </tr>
-                    <tr class="track-row">
-                        <td class="col-num">03</td>
-                        <td class="col-title">Dori</td>
-                        <td class="col-type"><span class="badge-type">Single</span></td>
-                        <td class="col-year">2025</td>
-                    </tr>
-                    <tr class="track-row">
-                        <td class="col-num">04</td>
-                        <td class="col-title">Ise Tugue</td>
-                        <td class="col-type"><span class="badge-type">Single</span></td>
-                        <td class="col-year">2025</td>
-                    </tr>
-                    <tr class="track-row">
-                        <td class="col-num">05</td>
-                        <td class="col-title">Oraig We</td>
-                        <td class="col-type"><span class="badge-type">Single</span></td>
-                        <td class="col-year">2025</td>
-                    </tr>
-
-                    <!-- 2024 -->
-                    <tr class="track-row">
-                        <td class="col-num">06</td>
-                        <td class="col-title">Jesus Dierorie</td>
-                        <td class="col-type"><span class="badge-type">Single</span></td>
-                        <td class="col-year">2024</td>
-                    </tr>
-                    <tr class="track-row">
-                        <td class="col-num">07</td>
-                        <td class="col-title">Awahaiyabu Sariwaraibio</td>
-                        <td class="col-type"><span class="badge-type">Single</span></td>
-                        <td class="col-year">2024</td>
-                    </tr>
-                    <tr class="track-row">
-                        <td class="col-num">08</td>
-                        <td class="col-title">Afraya Empa</td>
-                        <td class="col-type"><span class="badge-type">Single</span></td>
-                        <td class="col-year">2024</td>
-                    </tr>
-                    <tr class="track-row">
-                        <td class="col-num">09</td>
-                        <td class="col-title">Ture Ture</td>
-                        <td class="col-type"><span class="badge-type">Single</span></td>
-                        <td class="col-year">2024</td>
-                    </tr>
-
-                    <!-- 2023 -->
-                    <tr class="track-row">
-                        <td class="col-num">10</td>
-                        <td class="col-title">Are Firiwa</td>
-                        <td class="col-type"><span class="badge-type">Single</span></td>
-                        <td class="col-year">2023</td>
-                    </tr>
-                    <tr class="track-row">
-                        <td class="col-num">11</td>
-                        <td class="col-title">Are Are Firiva</td>
-                        <td class="col-type"><span class="badge-type">Single</span></td>
-                        <td class="col-year">2023</td>
-                    </tr>
-                    <tr class="track-row">
-                        <td class="col-num">12</td>
-                        <td class="col-title">Airetie</td>
-                        <td class="col-type"><span class="badge-type">Single</span></td>
-                        <td class="col-year">2023</td>
-                    </tr>
-                    <tr class="track-row">
-                        <td class="col-num">13</td>
-                        <td class="col-title">Ferrson</td>
-                        <td class="col-type"><span class="badge-type">EP</span></td>
-                        <td class="col-year">2023</td>
-                    </tr>
-
-                    <!-- 2022 -->
-                    <tr class="track-row">
-                        <td class="col-num">14</td>
-                        <td class="col-title">Hesai Huarawa</td>
-                        <td class="col-type"><span class="badge-type">Single</span></td>
-                        <td class="col-year">2022</td>
-                    </tr>
-                    <tr class="track-row">
-                        <td class="col-num">15</td>
-                        <td class="col-title">Kahia Bekobei</td>
-                        <td class="col-type"><span class="badge-type">Single</span></td>
-                        <td class="col-year">2022</td>
-                    </tr>
-                    <tr class="track-row">
-                        <td class="col-num">16</td>
-                        <td class="col-title">Ika Hikeie (feat. Brecko)</td>
-                        <td class="col-type"><span class="badge-type">Single</span></td>
-                        <td class="col-year">2022</td>
-                    </tr>
-
-                    <!-- 2021 -->
-                    <tr class="track-row">
-                        <td class="col-num">17</td>
-                        <td class="col-title">Salomina</td>
-                        <td class="col-type"><span class="badge-type">Single</span></td>
-                        <td class="col-year">2021</td>
-                    </tr>
-                    <tr class="track-row">
-                        <td class="col-num">18</td>
-                        <td class="col-title">Buegh Hueco</td>
-                        <td class="col-type"><span class="badge-type">Single</span></td>
-                        <td class="col-year">2021</td>
-                    </tr>
-                    <tr class="track-row">
-                        <td class="col-num">19</td>
-                        <td class="col-title">Afra Hueco</td>
-                        <td class="col-type"><span class="badge-type">Single</span></td>
-                        <td class="col-year">2021</td>
-                    </tr>
-                    <tr class="track-row">
-                        <td class="col-num">20</td>
-                        <td class="col-title">Wahiya</td>
-                        <td class="col-type"><span class="badge-type">Single</span></td>
-                        <td class="col-year">2021</td>
-                    </tr>
-                    <tr class="track-row">
-                        <td class="col-num">21</td>
-                        <td class="col-title">Colletion</td>
-                        <td class="col-type"><span class="badge-type">EP</span></td>
-                        <td class="col-year">2021</td>
-                    </tr>
-
-                    <!-- 2020 & 2019 -->
-                    <tr class="track-row">
-                        <td class="col-num">22</td>
-                        <td class="col-title">Rouffaer Boys</td>
-                        <td class="col-type"><span class="badge-type">EP</span></td>
-                        <td class="col-year">2020</td>
-                    </tr>
-                    <tr class="track-row">
-                        <td class="col-num">23</td>
-                        <td class="col-title">Aiye Ouje</td>
-                        <td class="col-type"><span class="badge-type">Single</span></td>
-                        <td class="col-year">2019</td>
-                    </tr>
-                    <tr class="track-row">
-                        <td class="col-num">24</td>
-                        <td class="col-title">Sore</td>
-                        <td class="col-type"><span class="badge-type">Single</span></td>
-                        <td class="col-year">2019</td>
-                    </tr>
-                    <tr class="track-row">
-                        <td class="col-num">25</td>
-                        <td class="col-title">Sekolah Kabari</td>
-                        <td class="col-type"><span class="badge-type">Single</span></td>
-                        <td class="col-year">2019</td>
-                    </tr>
-                    <tr class="track-row">
-                        <td class="col-num">26</td>
-                        <td class="col-title">Kihai Ababi</td>
-                        <td class="col-type"><span class="badge-type">Single</span></td>
-                        <td class="col-year">2019</td>
-                    </tr>
-                    <tr class="track-row">
-                        <td class="col-num">27</td>
-                        <td class="col-title">Collection - Ferrson</td>
-                        <td class="col-type"><span class="badge-type">Album</span></td>
-                        <td class="col-year">2019</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <!-- Section Bio / About -->
-        <section id="about" class="about-card">
-            <h3>About Ferrson</h3>
-            <p>Ferrson is an independent music artist and creator operating under Ferwap Music Entertainment. With a comprehensive discography spanning from 2019 to 2026, Ferrson delivers authentic musical works, singles, EPs, and album releases across streaming platforms worldwide.</p>
-        </section>
+        <div class="about-section" id="about">
+            <h2>ABOUT FERRSON</h2>
+            <p>Ferrson is an independent music artist operating under Ferwap Music Entertainment. Delivering authentic releases spanning from 2019 to 2026, Ferrson continues to release original songs, EPs, and albums across global platforms.</p>
+        </div>
 
     </main>
 
-    <!-- Footer -->
     <footer>
-        <div class="footer-inner">
-            <div class="footer-text">
-                &copy; 2026 FERWAP MUSIC ENTERTAINMENT. ALL RIGHTS RESERVED. | 
-                <a href="https://ferwap.com/#terms" target="_blank">TERMS AND CONDITIONS</a> | 
-                <a href="https://ferwap.com/#privacy" target="_blank">PRIVACY POLICY</a>
-            </div>
-            <div class="social-nav">
-                <a href="https://www.instagram.com/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.youtube.com/" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-            </div>
+        <div class="footer-left">
+            &copy; 2026 FERWAP MUSIC ENTERTAINMENT | ALL RIGHTS RESERVED | 
+            <a href="https://ferwap.com/#terms" target="_blank">TERMS AND CONDITIONS</a> | 
+            <a href="https://ferwap.com/#privacy" target="_blank">PRIVACY POLICY</a>
+        </div>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.youtube.com/" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
         </div>
     </footer>
 
