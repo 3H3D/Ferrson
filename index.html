@@ -3,561 +3,538 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ferrson - Official Website</title>
+    <title>FERRSON • Official Artist Hub</title>
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --bg-dark: #0b0c10;
-            --card-bg: rgba(20, 24, 33, 0.85);
+            --bg-base: #0a0b0e;
+            --bg-surface: #12141c;
+            --bg-hover: #1c1f2b;
+            --accent-red: #e50914;
             --accent-gold: #d4af37;
-            --text-main: #f5f5f7;
-            --text-muted: #a1a1aa;
-            --border-color: rgba(212, 175, 55, 0.2);
+            --text-primary: #ffffff;
+            --text-secondary: #94a3b8;
+            --border: rgba(255, 255, 255, 0.08);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             scroll-behavior: smooth;
         }
 
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
+            background-color: var(--bg-base);
+            color: var(--text-primary);
             overflow-x: hidden;
         }
 
-        /* --- NAVIGASI --- */
+        /* --- HEADER NAVIGATION --- */
         nav {
             position: fixed;
             top: 0;
+            left: 0;
             width: 100%;
-            padding: 20px 40px;
+            padding: 16px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            background: rgba(11, 12, 16, 0.9);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border-color);
+            background: rgba(10, 11, 14, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
         }
 
-        .logo {
-            font-family: 'Cinzel', serif;
-            font-size: 1.5rem;
+        .brand-logo {
+            font-size: 1.25rem;
             font-weight: 800;
-            letter-spacing: 3px;
-            color: var(--accent-gold);
+            letter-spacing: 2px;
+            color: var(--text-primary);
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .brand-logo span {
+            color: var(--accent-red);
         }
 
         .nav-links {
             display: flex;
-            gap: 25px;
+            gap: 28px;
             list-style: none;
         }
 
         .nav-links a {
-            color: var(--text-muted);
+            color: var(--text-secondary);
             text-decoration: none;
             font-size: 0.85rem;
-            letter-spacing: 2px;
+            font-weight: 600;
+            letter-spacing: 1px;
             text-transform: uppercase;
-            transition: 0.3s ease;
+            transition: color 0.3s ease;
         }
 
         .nav-links a:hover {
-            color: var(--accent-gold);
+            color: var(--text-primary);
         }
 
-        /* --- HERO SECTION --- */
-        .hero {
+        /* --- ARTIST BANNER HERO --- */
+        .hero-banner {
             position: relative;
-            padding: 160px 20px 80px;
-            text-align: center;
-            overflow: hidden;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(11, 12, 16, 0.9), rgba(11, 12, 16, 0.95)), 
+            height: 60vh;
+            min-height: 400px;
+            display: flex;
+            align-items: flex-end;
+            padding: 0 40px 40px;
+            background: linear-gradient(180deg, rgba(10, 11, 14, 0.2) 0%, rgba(10, 11, 14, 0.95) 100%),
                         url('Ferwap.jpeg') center/cover no-repeat;
-            z-index: -1;
-            filter: contrast(1.1);
+            border-bottom: 1px solid var(--border);
         }
 
-        .profile-wrapper {
-            width: 110px;
-            height: 110px;
-            margin: 0 auto 20px;
-            border-radius: 50%;
-            border: 2px solid var(--accent-gold);
-            padding: 4px;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
-            background: var(--bg-dark);
-        }
-
-        .profile-wrapper img {
+        .hero-content {
+            max-width: 1200px;
             width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        .hero h1 {
-            font-family: 'Cinzel', serif;
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            letter-spacing: 6px;
-            color: #fff;
-            margin-bottom: 10px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
-        }
-
-        .hero p {
-            color: var(--accent-gold);
-            font-size: 0.9rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-        }
-
-        /* --- CATALOG / DISCOGRAPHY SECTION --- */
-        section {
-            padding: 80px 20px;
-            max-width: 900px;
             margin: 0 auto;
         }
 
-        .section-title {
-            margin-bottom: 40px;
-        }
-
-        .section-title h2 {
-            font-family: 'Cinzel', serif;
-            font-size: 1.8rem;
-            letter-spacing: 4px;
-            color: var(--accent-gold);
-            border-bottom: 2px solid var(--accent-gold);
-            padding-bottom: 8px;
-            display: inline-block;
-        }
-
-        .catalog-list {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .catalog-item {
-            display: flex;
+        .verified-badge {
+            display: inline-flex;
             align-items: center;
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 16px 20px;
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.3s ease;
-        }
-
-        .catalog-item:hover {
-            border-color: var(--accent-gold);
-            background: #181c27;
-            transform: translateX(5px);
-            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.15);
-        }
-
-        .catalog-num {
-            font-family: 'Cinzel', serif;
-            font-size: 1rem;
+            gap: 6px;
+            font-size: 0.8rem;
             font-weight: 700;
-            color: var(--accent-gold);
-            width: 55px;
+            color: #38bdf8;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
         }
 
-        .catalog-info {
-            flex-grow: 1;
+        .artist-title {
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: -1px;
+            margin-bottom: 12px;
         }
 
-        .catalog-info h3 {
-            font-size: 1.05rem;
-            color: #fff;
-            margin-bottom: 3px;
-            letter-spacing: 0.5px;
+        .artist-meta {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            font-weight: 500;
         }
 
-        .catalog-info p {
-            font-size: 0.78rem;
-            color: var(--text-muted);
+        /* --- MAIN CONTENT CONTAINER --- */
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px 40px;
         }
 
-        .catalog-arrow {
-            color: var(--text-muted);
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 30px;
+        }
+
+        .section-header h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        /* --- TRACKLIST TABLE STYLE --- */
+        .track-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .track-table th {
+            text-align: left;
+            padding: 12px 16px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-secondary);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .track-row {
+            transition: background 0.2s ease;
+            cursor: pointer;
+        }
+
+        .track-row:hover {
+            background-color: var(--bg-hover);
+        }
+
+        .track-row td {
+            padding: 16px;
             font-size: 0.9rem;
-            transition: 0.3s;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
         }
 
-        .catalog-item:hover .catalog-arrow {
-            color: var(--accent-gold);
-            transform: translateX(3px);
+        .col-num {
+            width: 50px;
+            color: var(--text-secondary);
+            font-weight: 600;
         }
 
-        /* --- ABOUT BOX --- */
-        .about-box {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 35px;
-            text-align: center;
-            line-height: 1.8;
-            color: #d1d5db;
+        .col-title {
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .col-type {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .col-year {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            text-align: right;
+        }
+
+        .badge-type {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.06);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        /* --- ABOUT CARD --- */
+        .about-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 32px;
+            margin-top: 60px;
+        }
+
+        .about-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+        }
+
+        .about-card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
             font-size: 0.95rem;
         }
 
         /* --- FOOTER --- */
-        .footer-warm {
-            border-top: 1px solid var(--border-color);
-            padding: 30px 20px;
-            background: #060709;
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 30px 40px;
+            background: #07080a;
+            margin-top: 80px;
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            max-width: 900px;
-            margin: 0 auto;
-            gap: 15px;
+            gap: 20px;
         }
 
-        .footer-left {
-            font-size: 0.75rem;
-            color: var(--text-muted);
+        .footer-text {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
         }
 
-        .footer-left a {
-            color: var(--text-muted);
+        .footer-text a {
+            color: var(--text-secondary);
             text-decoration: none;
+            transition: color 0.2s;
         }
 
-        .footer-left a:hover {
-            color: var(--accent-gold);
+        .footer-text a:hover {
+            color: var(--text-primary);
         }
 
-        .social-icons {
-            display: flex;
-            gap: 18px;
-        }
-
-        .social-icons a {
-            color: var(--text-muted);
+        .social-nav a {
+            color: var(--text-secondary);
             font-size: 1.1rem;
-            transition: 0.3s;
+            margin-left: 20px;
+            transition: color 0.2s;
         }
 
-        .social-icons a:hover {
-            color: var(--accent-gold);
+        .social-nav a:hover {
+            color: var(--accent-red);
         }
 
         @media (max-width: 768px) {
-            nav { padding: 15px 20px; }
+            nav { padding: 16px 20px; }
             .nav-links { display: none; }
-            .footer-warm { flex-direction: column; text-align: center; }
-            .catalog-item { padding: 14px; }
+            .hero-banner { padding: 0 20px 30px; height: 45vh; }
+            .main-container { padding: 30px 20px; }
+            .col-type { display: none; }
+            .footer-inner { flex-direction: column; text-align: center; }
+            .social-nav a { margin: 0 10px; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Navigasi Utama -->
     <nav>
-        <a href="#home" class="logo">FERRSON</a>
+        <a href="#home" class="brand-logo">
+            <span>FERWAP</span> MUSIC
+        </a>
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
-            <li><a href="#music">Catalog</a></li>
+            <li><a href="#catalog">Catalog</a></li>
             <li><a href="#about">About</a></li>
         </ul>
     </nav>
 
-    <!-- Hero Section dengan Background Ferwap.jpeg -->
-    <header id="home" class="hero">
-        <div class="hero-bg"></div>
-        <div class="profile-wrapper">
-            <img src="ferrson-profile.jpg" alt="Ferrson Profile">
+    <!-- Banner Hero Sinematik Modern -->
+    <header id="home" class="hero-banner">
+        <div class="hero-content">
+            <div class="verified-badge">
+                <i class="fa-solid fa-circle-check"></i> Official Artist
+            </div>
+            <h1 class="artist-title">FERRSON</h1>
+            <p class="artist-meta">Singer • Songwriter • Music Creator under Ferwap Music Entertainment</p>
         </div>
-        <h1>FERRSON</h1>
-        <p>Artist • Music Creator</p>
     </header>
 
-    <section id="music">
-        <div class="section-title">
-            <h2>Complete Discography & Catalog</h2>
+    <!-- Main Content Container -->
+    <main class="main-container">
+
+        <!-- Section Katalog Diskografi -->
+        <section id="catalog">
+            <div class="section-header">
+                <h2>Discography & Catalog</h2>
+            </div>
+
+            <table class="track-table">
+                <thead>
+                    <tr>
+                        <th class="col-num">#</th>
+                        <th>Title</th>
+                        <th class="col-type">Format</th>
+                        <th class="col-year">Release</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 2026 -->
+                    <tr class="track-row">
+                        <td class="col-num">01</td>
+                        <td class="col-title">Toteko</td>
+                        <td class="col-type"><span class="badge-type">Single</span></td>
+                        <td class="col-year">2026</td>
+                    </tr>
+
+                    <!-- 2025 -->
+                    <tr class="track-row">
+                        <td class="col-num">02</td>
+                        <td class="col-title">Fiaki</td>
+                        <td class="col-type"><span class="badge-type">Single</span></td>
+                        <td class="col-year">2025</td>
+                    </tr>
+                    <tr class="track-row">
+                        <td class="col-num">03</td>
+                        <td class="col-title">Dori</td>
+                        <td class="col-type"><span class="badge-type">Single</span></td>
+                        <td class="col-year">2025</td>
+                    </tr>
+                    <tr class="track-row">
+                        <td class="col-num">04</td>
+                        <td class="col-title">Ise Tugue</td>
+                        <td class="col-type"><span class="badge-type">Single</span></td>
+                        <td class="col-year">2025</td>
+                    </tr>
+                    <tr class="track-row">
+                        <td class="col-num">05</td>
+                        <td class="col-title">Oraig We</td>
+                        <td class="col-type"><span class="badge-type">Single</span></td>
+                        <td class="col-year">2025</td>
+                    </tr>
+
+                    <!-- 2024 -->
+                    <tr class="track-row">
+                        <td class="col-num">06</td>
+                        <td class="col-title">Jesus Dierorie</td>
+                        <td class="col-type"><span class="badge-type">Single</span></td>
+                        <td class="col-year">2024</td>
+                    </tr>
+                    <tr class="track-row">
+                        <td class="col-num">07</td>
+                        <td class="col-title">Awahaiyabu Sariwaraibio</td>
+                        <td class="col-type"><span class="badge-type">Single</span></td>
+                        <td class="col-year">2024</td>
+                    </tr>
+                    <tr class="track-row">
+                        <td class="col-num">08</td>
+                        <td class="col-title">Afraya Empa</td>
+                        <td class="col-type"><span class="badge-type">Single</span></td>
+                        <td class="col-year">2024</td>
+                    </tr>
+                    <tr class="track-row">
+                        <td class="col-num">09</td>
+                        <td class="col-title">Ture Ture</td>
+                        <td class="col-type"><span class="badge-type">Single</span></td>
+                        <td class="col-year">2024</td>
+                    </tr>
+
+                    <!-- 2023 -->
+                    <tr class="track-row">
+                        <td class="col-num">10</td>
+                        <td class="col-title">Are Firiwa</td>
+                        <td class="col-type"><span class="badge-type">Single</span></td>
+                        <td class="col-year">2023</td>
+                    </tr>
+                    <tr class="track-row">
+                        <td class="col-num">11</td>
+                        <td class="col-title">Are Are Firiva</td>
+                        <td class="col-type"><span class="badge-type">Single</span></td>
+                        <td class="col-year">2023</td>
+                    </tr>
+                    <tr class="track-row">
+                        <td class="col-num">12</td>
+                        <td class="col-title">Airetie</td>
+                        <td class="col-type"><span class="badge-type">Single</span></td>
+                        <td class="col-year">2023</td>
+                    </tr>
+                    <tr class="track-row">
+                        <td class="col-num">13</td>
+                        <td class="col-title">Ferrson</td>
+                        <td class="col-type"><span class="badge-type">EP</span></td>
+                        <td class="col-year">2023</td>
+                    </tr>
+
+                    <!-- 2022 -->
+                    <tr class="track-row">
+                        <td class="col-num">14</td>
+                        <td class="col-title">Hesai Huarawa</td>
+                        <td class="col-type"><span class="badge-type">Single</span></td>
+                        <td class="col-year">2022</td>
+                    </tr>
+                    <tr class="track-row">
+                        <td class="col-num">15</td>
+                        <td class="col-title">Kahia Bekobei</td>
+                        <td class="col-type"><span class="badge-type">Single</span></td>
+                        <td class="col-year">2022</td>
+                    </tr>
+                    <tr class="track-row">
+                        <td class="col-num">16</td>
+                        <td class="col-title">Ika Hikeie (feat. Brecko)</td>
+                        <td class="col-type"><span class="badge-type">Single</span></td>
+                        <td class="col-year">2022</td>
+                    </tr>
+
+                    <!-- 2021 -->
+                    <tr class="track-row">
+                        <td class="col-num">17</td>
+                        <td class="col-title">Salomina</td>
+                        <td class="col-type"><span class="badge-type">Single</span></td>
+                        <td class="col-year">2021</td>
+                    </tr>
+                    <tr class="track-row">
+                        <td class="col-num">18</td>
+                        <td class="col-title">Buegh Hueco</td>
+                        <td class="col-type"><span class="badge-type">Single</span></td>
+                        <td class="col-year">2021</td>
+                    </tr>
+                    <tr class="track-row">
+                        <td class="col-num">19</td>
+                        <td class="col-title">Afra Hueco</td>
+                        <td class="col-type"><span class="badge-type">Single</span></td>
+                        <td class="col-year">2021</td>
+                    </tr>
+                    <tr class="track-row">
+                        <td class="col-num">20</td>
+                        <td class="col-title">Wahiya</td>
+                        <td class="col-type"><span class="badge-type">Single</span></td>
+                        <td class="col-year">2021</td>
+                    </tr>
+                    <tr class="track-row">
+                        <td class="col-num">21</td>
+                        <td class="col-title">Colletion</td>
+                        <td class="col-type"><span class="badge-type">EP</span></td>
+                        <td class="col-year">2021</td>
+                    </tr>
+
+                    <!-- 2020 & 2019 -->
+                    <tr class="track-row">
+                        <td class="col-num">22</td>
+                        <td class="col-title">Rouffaer Boys</td>
+                        <td class="col-type"><span class="badge-type">EP</span></td>
+                        <td class="col-year">2020</td>
+                    </tr>
+                    <tr class="track-row">
+                        <td class="col-num">23</td>
+                        <td class="col-title">Aiye Ouje</td>
+                        <td class="col-type"><span class="badge-type">Single</span></td>
+                        <td class="col-year">2019</td>
+                    </tr>
+                    <tr class="track-row">
+                        <td class="col-num">24</td>
+                        <td class="col-title">Sore</td>
+                        <td class="col-type"><span class="badge-type">Single</span></td>
+                        <td class="col-year">2019</td>
+                    </tr>
+                    <tr class="track-row">
+                        <td class="col-num">25</td>
+                        <td class="col-title">Sekolah Kabari</td>
+                        <td class="col-type"><span class="badge-type">Single</span></td>
+                        <td class="col-year">2019</td>
+                    </tr>
+                    <tr class="track-row">
+                        <td class="col-num">26</td>
+                        <td class="col-title">Kihai Ababi</td>
+                        <td class="col-type"><span class="badge-type">Single</span></td>
+                        <td class="col-year">2019</td>
+                    </tr>
+                    <tr class="track-row">
+                        <td class="col-num">27</td>
+                        <td class="col-title">Collection - Ferrson</td>
+                        <td class="col-type"><span class="badge-type">Album</span></td>
+                        <td class="col-year">2019</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Section Bio / About -->
+        <section id="about" class="about-card">
+            <h3>About Ferrson</h3>
+            <p>Ferrson is an independent music artist and creator operating under Ferwap Music Entertainment. With a comprehensive discography spanning from 2019 to 2026, Ferrson delivers authentic musical works, singles, EPs, and album releases across streaming platforms worldwide.</p>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-text">
+                &copy; 2026 FERWAP MUSIC ENTERTAINMENT. ALL RIGHTS RESERVED. | 
+                <a href="https://ferwap.com/#terms" target="_blank">TERMS AND CONDITIONS</a> | 
+                <a href="https://ferwap.com/#privacy" target="_blank">PRIVACY POLICY</a>
+            </div>
+            <div class="social-nav">
+                <a href="https://www.instagram.com/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
         </div>
-        
-        <div class="catalog-list">
-            <!-- 2026 -->
-            <a href="#" target="_blank" class="catalog-item">
-                <div class="catalog-num">01.</div>
-                <div class="catalog-info">
-                    <h3>Toteko</h3>
-                    <p>Ferrson • Single • 2026</p>
-                </div>
-                <div class="catalog-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-            </a>
-
-            <!-- 2025 -->
-            <a href="#" target="_blank" class="catalog-item">
-                <div class="catalog-num">02.</div>
-                <div class="catalog-info">
-                    <h3>Fiaki</h3>
-                    <p>Ferrson • Single • 2025</p>
-                </div>
-                <div class="catalog-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-            </a>
-            <a href="#" target="_blank" class="catalog-item">
-                <div class="catalog-num">03.</div>
-                <div class="catalog-info">
-                    <h3>Dori</h3>
-                    <p>Ferrson • Single • 2025</p>
-                </div>
-                <div class="catalog-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-            </a>
-            <a href="#" target="_blank" class="catalog-item">
-                <div class="catalog-num">04.</div>
-                <div class="catalog-info">
-                    <h3>Ise Tugue</h3>
-                    <p>Ferrson • Single • 2025</p>
-                </div>
-                <div class="catalog-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-            </a>
-            <a href="#" target="_blank" class="catalog-item">
-                <div class="catalog-num">05.</div>
-                <div class="catalog-info">
-                    <h3>Oraig We</h3>
-                    <p>Ferrson • Single • 2025</p>
-                </div>
-                <div class="catalog-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-            </a>
-
-            <!-- 2024 -->
-            <a href="#" target="_blank" class="catalog-item">
-                <div class="catalog-num">06.</div>
-                <div class="catalog-info">
-                    <h3>Jesus Dierorie</h3>
-                    <p>Ferrson • Single • 2024</p>
-                </div>
-                <div class="catalog-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-            </a>
-            <a href="#" target="_blank" class="catalog-item">
-                <div class="catalog-num">07.</div>
-                <div class="catalog-info">
-                    <h3>Awahaiyabu Sariwaraibio</h3>
-                    <p>Ferrson • Single • 2024</p>
-                </div>
-                <div class="catalog-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-            </a>
-            <a href="#" target="_blank" class="catalog-item">
-                <div class="catalog-num">08.</div>
-                <div class="catalog-info">
-                    <h3>Afraya Empa</h3>
-                    <p>Ferrson • Single • 2024</p>
-                </div>
-                <div class="catalog-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-            </a>
-            <a href="#" target="_blank" class="catalog-item">
-                <div class="catalog-num">09.</div>
-                <div class="catalog-info">
-                    <h3>Ture Ture</h3>
-                    <p>Ferrson • Single • 2024</p>
-                </div>
-                <div class="catalog-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-            </a>
-
-            <!-- 2023 -->
-            <a href="#" target="_blank" class="catalog-item">
-                <div class="catalog-num">10.</div>
-                <div class="catalog-info">
-                    <h3>Are Firiwa</h3>
-                    <p>Ferrson • Single • 2023</p>
-                </div>
-                <div class="catalog-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-            </a>
-            <a href="#" target="_blank" class="catalog-item">
-                <div class="catalog-num">11.</div>
-                <div class="catalog-info">
-                    <h3>Are Are Firiva</h3>
-                    <p>Ferrson • Single • 2023</p>
-                </div>
-                <div class="catalog-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-            </a>
-            <a href="#" target="_blank" class="catalog-item">
-                <div class="catalog-num">12.</div>
-                <div class="catalog-info">
-                    <h3>Airetie</h3>
-                    <p>Ferrson • Single • 2023</p>
-                </div>
-                <div class="catalog-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-            </a>
-            <a href="#" target="_blank" class="catalog-item">
-                <div class="catalog-num">13.</div>
-                <div class="catalog-info">
-                    <h3>Ferrson (EP)</h3>
-                    <p>Ferrson • EP • 2023</p>
-                </div>
-                <div class="catalog-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-            </a>
-
-            <!-- 2022 -->
-            <a href="#" target="_blank" class="catalog-item">
-                <div class="catalog-num">14.</div>
-                <div class="catalog-info">
-                    <h3>Hesai Huarawa</h3>
-                    <p>Ferrson • Single • 2022</p>
-                </div>
-                <div class="catalog-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-            </a>
-            <a href="#" target="_blank" class="catalog-item">
-                <div class="catalog-num">15.</div>
-                <div class="catalog-info">
-                    <h3>Kahia Bekobei</h3>
-                    <p>Ferrson • Single • 2022</p>
-                </div>
-                <div class="catalog-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-            </a>
-            <a href="#" target="_blank" class="catalog-item">
-                <div class="catalog-num">16.</div>
-                <div class="catalog-info">
-                    <h3>Ika Hikeie</h3>
-                    <p>Ferrson & Brecko • Single • 2022</p>
-                </div>
-                <div class="catalog-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-            </a>
-
-            <!-- 2021 -->
-            <a href="#" target="_blank" class="catalog-item">
-                <div class="catalog-num">17.</div>
-                <div class="catalog-info">
-                    <h3>Salomina</h3>
-                    <p>Ferrson • Single • 2021</p>
-                </div>
-                <div class="catalog-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-            </a>
-            <a href="#" target="_blank" class="catalog-item">
-                <div class="catalog-num">18.</div>
-                <div class="catalog-info">
-                    <h3>Buegh Hueco</h3>
-                    <p>Ferrson • Single • 2021</p>
-                </div>
-                <div class="catalog-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-            </a>
-            <a href="#" target="_blank" class="catalog-item">
-                <div class="catalog-num">19.</div>
-                <div class="catalog-info">
-                    <h3>Afra Hueco</h3>
-                    <p>Ferrson • Single • 2021</p>
-                </div>
-                <div class="catalog-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-            </a>
-            <a href="#" target="_blank" class="catalog-item">
-                <div class="catalog-num">20.</div>
-                <div class="catalog-info">
-                    <h3>Wahiya</h3>
-                    <p>Ferrson • Single • 2021</p>
-                </div>
-                <div class="catalog-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-            </a>
-            <a href="#" target="_blank" class="catalog-item">
-                <div class="catalog-num">21.</div>
-                <div class="catalog-info">
-                    <h3>Colletion (EP)</h3>
-                    <p>Ferrson • EP • 2021</p>
-                </div>
-                <div class="catalog-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-            </a>
-
-            <!-- 2020 -->
-            <a href="#" target="_blank" class="catalog-item">
-                <div class="catalog-num">22.</div>
-                <div class="catalog-info">
-                    <h3>Rouffaer Boys (EP)</h3>
-                    <p>Ferrson • EP • 2020</p>
-                </div>
-                <div class="catalog-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-            </a>
-
-            <!-- 2019 -->
-            <a href="#" target="_blank" class="catalog-item">
-                <div class="catalog-num">23.</div>
-                <div class="catalog-info">
-                    <h3>Aiye Ouje</h3>
-                    <p>Ferrson • Single • 2019</p>
-                </div>
-                <div class="catalog-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-            </a>
-            <a href="#" target="_blank" class="catalog-item">
-                <div class="catalog-num">24.</div>
-                <div class="catalog-info">
-                    <h3>Sore</h3>
-                    <p>Ferrson • Single • 2019</p>
-                </div>
-                <div class="catalog-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-            </a>
-            <a href="#" target="_blank" class="catalog-item">
-                <div class="catalog-num">25.</div>
-                <div class="catalog-info">
-                    <h3>Sekolah Kabari</h3>
-                    <p>Ferrson • Single • 2019</p>
-                </div>
-                <div class="catalog-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-            </a>
-            <a href="#" target="_blank" class="catalog-item">
-                <div class="catalog-num">26.</div>
-                <div class="catalog-info">
-                    <h3>Kihai Ababi</h3>
-                    <p>Ferrson • Single • 2019</p>
-                </div>
-                <div class="catalog-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-            </a>
-            <a href="#" target="_blank" class="catalog-item">
-                <div class="catalog-num">27.</div>
-                <div class="catalog-info">
-                    <h3>Collection - Ferrson (Album)</h3>
-                    <p>Ferrson • Album • 2019</p>
-                </div>
-                <div class="catalog-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-            </a>
-        </div>
-    </section>
-
-    <section id="about">
-        <div class="section-title">
-            <h2>About</h2>
-        </div>
-        <div class="about-box">
-            <p>Ferrson is a music creator operating under Ferwap Music Entertainment, contributing to authentic musical releases and comprehensive catalogs.</p>
-        </div>
-    </section>
-
-    <div class="footer-warm">
-        <div class="footer-left">
-            &copy; 2026 FERWAP MUSIC ENTERTAINMENT | ALL RIGHTS RESERVED | 
-            <a href="https://ferwap.com/#terms" target="_blank">TERMS AND CONDITIONS</a> | 
-            <a href="https://ferwap.com/#privacy" target="_blank">PRIVACY POLICY</a>
-        </div>
-        <div class="social-icons">
-            <a href="https://www.instagram.com/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.youtube.com/" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-        </div>
-    </div>
+    </footer>
 
 </body>
 </html>
